@@ -12,3 +12,7 @@ variable "location" {
   #}
 }
 variable "tags" {}
+
+variable "vnetname" {
+  
+}
