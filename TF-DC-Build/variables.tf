@@ -13,6 +13,13 @@ variable "location" {
 }
 variable "tags" {}
 
-variable "vnetname" {
+variable "vnetname" {}
+
+variable "keyvault" {}
+
+variable "tenantid" {}
+
+variable "vmsize" {} 
+
+variable "admin_username" {}
   
-}
