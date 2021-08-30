@@ -38,7 +38,7 @@ resource "azurerm_public_ip" "AzureGWIP" {
   name                = "AzureGWIP"
   location            = var.location
   resource_group_name = var.resourcename
-  allocation_method   = "Static"
+  allocation_method   = "Dynamic"
 }
 
 resource "azurerm_virtual_network_gateway" "SitetoSite" {
