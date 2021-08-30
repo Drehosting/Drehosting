@@ -37,7 +37,7 @@ resource "azurerm_virtual_network" "virtualnetwork" {
 resource "azurerm_public_ip" "AzureGWIP" {
   name                = "AzureGWIP"
   location            = var.location
-  resource_group_name = var.reourcename
+  resource_group_name = var.resourcename
   allocation_method   = "Static"
 }
 
