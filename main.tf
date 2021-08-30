@@ -55,7 +55,7 @@ resource "azurerm_virtual_network_gateway" "SitetoSite" {
   ip_configuration {
     public_ip_address_id          = azurerm_public_ip.AzureGWIP
     private_ip_address_allocation = "Dynamic"
-    subnet_id                     = subnet.VPNGWSubnet
+    subnet_id                     = GatewaySubnet
   }
 }
  
