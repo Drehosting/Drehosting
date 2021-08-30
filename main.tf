@@ -58,4 +58,17 @@ resource "azurerm_virtual_network_gateway" "SitetoSite" {
     subnet_id                     = azurerm_subnet.GatewaySubnet.id
   }
 }
+  
+resource "azurerm_virtual_network_gateway_connection" "onpremise" {
+  name                = "onpremise"
+  location            = var.location
+  resource_group_name = var.resourcename
+
+  type                       = "IPsec"
+  virtual_network_gateway_id = azurerm_virtual_network_gateway.SitetoSite.id
+  local_network_gateway_id   = azurerm_local_network_gateway.onpremise.id
+
+  shared_key = "4-v3ry-53cr37-1p53c-5h4r3d-k3y"
+}
+
  
