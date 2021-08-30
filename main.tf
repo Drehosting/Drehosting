@@ -11,6 +11,7 @@ resource "azurerm_virtual_network" "virtualnetwork" {
   resource_group_name = var.resourcename
   tags                = var.tags
 
+}
  resource "azurerm_subnet" "GatewaySubnet" {
   name                 = "GatewaySubnet"
   resource_group_name  = var.resourcename
@@ -57,4 +58,4 @@ resource "azurerm_virtual_network_gateway" "SitetoSite" {
     subnet_id                     = subnet.VPNGWSubnet
   }
 }
- }
+ 
