@@ -150,3 +150,28 @@ resource "azurerm_windows_virtual_machine" "vm01" {
     version   = "latest"
   }
 }
+
+#Run setup scripts on dc01 virtual machines
+#Region1
+resource "azurerm_virtual_machine_extension" "dc01-basesetup" {
+  name                 = "dc01-basesetup"
+  virtual_machine_id   = azurerm_windows_virtual_machine.vm01.id
+  depends_on           = [azurerm_windows_virtual_machine.vm01]
+  publisher            = "Microsoft.Compute"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "1.9"
+
+  protected_settings = <<PROTECTED_SETTINGS
+    {
+      "commandToExecute": "powershell.exe -Command \"./baselab_DCSetup1.ps1; exit 0;\""
+    }
+  PROTECTED_SETTINGS
+
+  settings = <<SETTINGS
+    {
+        "fileUris": [
+          "https://drehstg001.blob.core.windows.net/dretf001/baselab_DCSetup1.ps1"
+        ]
+    }
+  SETTINGS
+}
