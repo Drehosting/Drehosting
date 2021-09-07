@@ -10,8 +10,8 @@ choco install googlechrome -y
 choco install bginfo -y
 #Download Scripts to Set the rest of the Domain up when logged in
 New-Item -Path "c:\" -Name "BaselabSetup" -ItemType "directory" -Force
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/jakewalsh90/Terraform-Azure/main/Dual-Region-Azure-BaseLab/PowerShell/DC1/baselab_DomainSetup.ps1" -OutFile "C:\BaselabSetup\baselab_DomainSetup.ps1"
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/jakewalsh90/Terraform-Azure/main/Dual-Region-Azure-BaseLab/PowerShell/DC1/baselab_LabStructure.ps1" -OutFile "C:\BaselabSetup\baselab_LabStructure.ps1"
+Invoke-WebRequest -Uri "https://drehstg001.blob.core.windows.net/dretf001/baselab_DomainSetup.ps1?sp=r&st=2021-09-07T15:09:57Z&se=2022-08-30T23:09:57Z&spr=https&sv=2020-08-04&sr=c&sig=thF9FntFLfTXugSdYH%2Bs%2F9Udl%2BXdLw9G4Uj%2FD8Q%2FWuY%3D" -OutFile "C:\BaselabSetup\baselab_DomainSetup.ps1"
+Invoke-WebRequest -Uri "https://drehstg001.blob.core.windows.net/dretf001/baselab_LabStructure.ps1?sp=r&st=2021-09-07T15:09:57Z&se=2022-08-30T23:09:57Z&spr=https&sv=2020-08-04&sr=c&sig=thF9FntFLfTXugSdYH%2Bs%2F9Udl%2BXdLw9G4Uj%2FD8Q%2FWuY%3D" -OutFile "C:\BaselabSetup\baselab_LabStructure.ps1"
 #Setup and Partition Data Disk
 Get-Disk | Where-Object partitionstyle -eq 'raw' | Initialize-Disk -PartitionStyle MBR -PassThru | New-Partition -AssignDriveLetter -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel 'Data' -Confirm:$false 
 #Allow Ping
