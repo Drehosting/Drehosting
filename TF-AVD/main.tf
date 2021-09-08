@@ -18,6 +18,7 @@ resource "azurerm_virtual_network" "virtualnetwork" {
 }
 
  resource "azurerm_subnet" "prodsubnet" {
+  depends_on          = [azurerm_virtual_network.virtualnetwork]
   name                 = var.prodsubnet
   resource_group_name  = var.resourcename
   virtual_network_name = var.vnetname
@@ -69,6 +70,7 @@ resource "azurerm_key_vault_secret" "vmpassword" {
 
 #Public IPs
 resource "azurerm_public_ip" "vm01-pip" {
+  depends_on                  = [azurerm_resource_group.resourcegroup]
   name                = "vm01-pip"
   resource_group_name = var.resourcename
   location            = var.location
@@ -170,7 +172,7 @@ resource "azurerm_virtual_machine_extension" "dc01-basesetup" {
   settings = <<SETTINGS
     {
         "fileUris": [
-          "https://drehstg001.blob.core.windows.net/dretf001/baselab_DCSetup1.ps1"
+          "https://drehstg001.blob.core.windows.net/dretf001/baselab_DCSetup1.ps1?sp=r&st=2021-09-07T15:09:57Z&se=2022-08-30T23:09:57Z&spr=https&sv=2020-08-04&sr=c&sig=thF9FntFLfTXugSdYH%2Bs%2F9Udl%2BXdLw9G4Uj%2FD8Q%2FWuY%3D"
         ]
     }
   SETTINGS

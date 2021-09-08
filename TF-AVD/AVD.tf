@@ -82,7 +82,7 @@ resource "azurerm_virtual_machine_extension" "registersessionhost" {
   auto_upgrade_minor_version = true
   settings = <<SETTINGS
     {
-        "ModulesUrl": "${var.artifactslocation}",
+        "ModulesUrl": "https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts/Configuration.zip",
         "ConfigurationFunction" : "Configuration.ps1\\AddSessionHost",
         "Properties": {
             "hostPoolName": "${var.hostpoolname}",

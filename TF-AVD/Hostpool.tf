@@ -14,6 +14,11 @@ resource "azurerm_virtual_desktop_host_pool" "wvdhppooled" {
 
   type               = "Pooled"
   load_balancer_type = "DepthFirst"
+  lifecycle {
+    ignore_changes = [
+      registration_info,
+    ]
+}
 }
 
 resource "azurerm_virtual_desktop_application_group" "desktopapp" {
