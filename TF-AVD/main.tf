@@ -10,6 +10,7 @@ resource "azurerm_virtual_network" "virtualnetwork" {
   depends_on          = [azurerm_resource_group.resourcegroup]
   name                = var.vnetname
   address_space       = ["172.16.0.0/20"]
+  dns_servers         = ["172.16.0.4", "8.8.8.8"]
   location            = var.location
   resource_group_name = var.resourcename
   tags                = var.tags
@@ -21,7 +22,6 @@ resource "azurerm_virtual_network" "virtualnetwork" {
   resource_group_name  = var.resourcename
   virtual_network_name = var.vnetname
   address_prefixes     = ["172.16.0.0/24"]
-  dns_servers         = ["172.16.0.4", "8.8.8.8"]
  }
 
 #KevVault
