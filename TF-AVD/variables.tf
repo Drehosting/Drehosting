@@ -28,3 +28,5 @@ variable "artifactslocation" {
 variable "wkspacename" {}
 variable "hppooled-name" {}
 variable "appgrp-name" {}
+variable "storageaccountname" {}
+variable "filesharename" {}
